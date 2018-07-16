@@ -1,0 +1,92 @@
+/* ===================================================
+/* INPUTS
+/* ===================================================
+@import ../config/_all
+
+// ====================================
+// VARIABLES
+// ====================================
+$card-name: 'card' !default
+$card-padding: 1.0rem !default
+$card-font-size: $font-size !default
+$card-font-color: $color-grey-50 !default
+$card-border: 1px solid $grey_base !default
+
+// ====================================
+// MIXINS
+// ====================================
+=create-card
+    width: 100%
+    border: $card-border
+    border-radius: $border-radius
+    overflow: hidden
+
+    // Elements
+    // --- HEADER ---
+    & > &__header
+        padding: ($card-padding * 2) $card-padding
+        border-bottom: $card-border
+
+        // Elements
+        & > .#{$card-name}__title
+            font:
+                size: 2.4rem
+                weight: $font-weight-heavy
+        & > .#{$card-name}__subtitle
+            font:
+                size: 1.8rem
+                weight: $font-weight-normal
+
+    // --- BODY ---
+    & > &__body
+        padding: $card-padding
+        font-size: $card-font-size
+        color: $card-font-color
+
+        // Elements
+        & > img,
+        & > .#{$card-name}__image
+            width: 100%
+
+    // --- FOOTER ---
+    & > &__footer
+        display: flex
+        flex: 1
+        border-top: $card-border
+
+        // Elements
+        & > .#{$card-name}__footer__item
+            display: flex
+            flex-grow: 1
+            flex-shrink: 0
+            flex-basis: 0
+            justify-content: center
+            align-items: center
+            margin: 0
+            padding: ($card-padding * 2) $card-padding
+
+            // Pseudo
+            &:not(:first-child)
+                border-left: $card-border
+
+            // Elements
+            & > a
+                text-decoration: none
+                color: map-get( $theme-map, dark)
+
+                &:hover
+                    color: map-get($theme-map, primary)
+    
+    // Modifiers
+    &.make-shadow
+        box-shadow: 0 0 1.0em rgba($color-pure-black, 0.15), 0 0 3.0em rgba($color-pure-black, 0.05)
+
+    &.make-hover
+        &:hover
+            box-shadow: 0 0 1.0em rgba($color-pure-black, 0.15), 0 0 3.0em rgba($color-pure-black, 0.05)
+
+// ====================================
+// CARDS
+// ====================================
+.#{$card-name}
+    +create-card
