@@ -1,59 +1,28 @@
 /* ===================================================
-/* INPUTS
+/* FORM (INPUTS)
 /* ===================================================
 @import ../config/_all
 
 // ====================================
 // VARIABLES
 // ====================================
-// input Variables
 $input-color-map: (primary: $lblue_base, info: $blue_base, success: $green_base, warning: $yellow_base, danger: $red_base) !default
-$input-name: "input" !default
-$input-width: 100% !default
-$input-height: 4.0rem !default
 $input-margin: 1.5rem !default
-$input-padding: 1.0rem !default
-$input-font-size: $font-size !default
-$input-font-color: $font-color !default
+$input-size: 4.0rem !default
 $input-border-color: map-get($theme-map, default) !default
-$input-label-font-size: 1.4rem !default
 
 // ====================================
 // MIXINS
 // ====================================
-=input-control
-    position: relative
-    display: inline-flex
-    justify-content: flex-start
-    align-items: center
-    height: $input-height
-    padding: $input-padding
-    appearance: none
-    border: 1px solid $color-none
-    outline: none
-    box-shadow: none
-    
-    // Pseudo
-    &:focus,
-    &:active
-        border-color: map-get($theme-map, primary)
-        box-shadow: 0 0 1.2rem rgba($lblue_base, 0.5)
-    &:disabled,
-    &.make-disabled
-        user-select: none
-        cursor: not-allowed
-        opacity: 0.5
-
 =create-input
     +input-control
-    width: $input-width
-    height: $input-height
+    width: 100%
+    height: $input-size
     margin-bottom: $input-margin
-    color: $input-font-color
+    color: $font-color
     border:
         radius: $border-radius
         color: $input-border-color
-
     // Pseudo
     &::-webkit-input-placeholder
         color: $color-grey-75
@@ -67,17 +36,16 @@ $input-label-font-size: 1.4rem !default
         color: $color-grey-75
     &::placeholder
         color: $color-grey-75
-
     &:hover,
     &:focus,
     &:active
         border-color: map-get($theme-map, primary)
-    
     // Modifiers
+    &.make-fluid
+        width: 100%
     @each $type, $color in $input-color-map
         &.make-#{$type}
             border-color: $color
-            
             // Pseudo
             &:focus,
             &:active
@@ -87,56 +55,40 @@ $input-label-font-size: 1.4rem !default
 // INPUTS
 // ====================================
 // --- TEXTS ---
-.#{$input-name}
+.input
     +create-input
 
 // --- LABELS ---
-.#{$input-name}__label
-    display: inline
+.label
+    display: inline-flex
     justify-content: flex-start
+    flex:
+        grow: 1
+        shrink: 0
+        basis: auto
     margin:
         bottom: 0.5rem
-        right: $input-margin / 2
     font:
-        size: $input-label-font-size
+        size: $font-size
         weight: $font-weight-heavy
-    color: $input-font-color
+    color: $font-color
 
 // --- SELECT ---
-.#{$input-name}__select
-    @extend .#{$input-name}
+.select
+    @extend .input
     background:
         image: url('https://png.icons8.com/expand-arrow/win8/12')
         repeat: no-repeat
-        position: 98%
-
+        position: calc(100% - 1.0rem)
     // Pseudo
     &::-ms-expand
         display: none
 
 // --- TEXT AREA ---
-.#{$input-name}__textarea
-    @extend .#{$input-name}
+.textarea
+    @extend .input
     height: 12.0rem
     font:
         family: inherit
-        size: $input-font-size
+        size: $font-size
     resize: vertical
-    
-// --- CHECKBOXES ---
-.#{$input-name}__checkbox
-    display: inline-flex
-    align-items: center
-    transform: scale(1.25)
-
-    // Pseudo
-    &:not(:first-of-type)
-        margin-left: 1.0rem
-
-    // Components
-    &__group
-        margin: 1.0rem 0
-    &__label
-        display: inline
-        margin-left: 1.5rem
-        font-size: 1.5rem
