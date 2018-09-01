@@ -8,7 +8,6 @@
 // =======================================
 *
     +reset
-
     // Pseudo
     &:before,
     &:after
@@ -16,16 +15,14 @@
 
 html
     font:
-        // Sets root 62.5% to 10px (100% = 16px)
-        size: 62.5%
-        // This line is to ensure HTML rem is at 10px
-        size: calc(1em * 0.625)
+        size: 62.5% // Sets root 62.5% to 10px (100% = 16px)
+        size: calc(1em * 0.625) // This line is to ensure HTML rem is at 10px
     text-rendering: optimizeLegibility
     font-smoothing: antialiased
 
 body
     height: 100%
-    line-height: 1.5
+    line-height: $line-height
     background: $background-color
     color: $font-color
     font:
@@ -36,10 +33,6 @@ body
 // =======================================
 // SELECTION
 // =======================================
-::-moz-selection
-    background: map-get($theme-map, primary)
-    color: map-get($theme-map, light)
-
 ::selection
     background: map-get($theme-map, primary)
     color: map-get($theme-map, light)
@@ -53,11 +46,9 @@ $list-spacing-h: 1.5rem
 ol,
 ul:not(.nav__menu):not(.menu)
     margin-left: $list-spacing-h
-
     // Pseudo
     &:not(:last-child)
         margin-bottom: $list-spacing-v
-
     // Elements
     & > li
         padding-left: $list-spacing-h

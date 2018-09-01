@@ -50,20 +50,16 @@ h6
 // ====================================
 // PARAGRAPHS, LINKS
 // ====================================
-p
-    font:
-        size: $font-size
-        weight: $font-weight-light
-
-a:not(.button):not(.menu__item)
+a
+    color: map-get($theme-map, primary)
     font:
         size: $font-size
         weight: $font-weight-normal
-    color: map-get($theme-map, primary)
     text-decoration: none
+    cursor: pointer
     // Pseudo
     &:hover
-        text-decoration: underline
+        color: $font-color
 
 // ====================================
 // TEXT FORMATS

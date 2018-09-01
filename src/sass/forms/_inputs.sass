@@ -17,39 +17,26 @@ $input-border-color: map-get($theme-map, default) !default
 =create-input
     +input-control
     width: 100%
-    height: $input-size
-    margin-bottom: $input-margin
+    line-height: $line-height
     color: $font-color
     border:
         radius: $border-radius
         color: $input-border-color
     // Pseudo
-    &::-webkit-input-placeholder
-        color: $color-grey-75
-    &::-moz-placeholder
-        color: $color-grey-75
-        opacity: 1
-    &:-moz-placeholder
-        color: $color-grey-75
-        opacity: 1
-    &:-ms-textarea-placeholder
-        color: $color-grey-75
     &::placeholder
         color: $color-grey-75
+        opacity: $opacity-muted
     &:hover,
     &:focus,
     &:active
         border-color: map-get($theme-map, primary)
-    // Modifiers
-    &.make-fluid
-        width: 100%
     @each $type, $color in $input-color-map
         &.make-#{$type}
             border-color: $color
             // Pseudo
             &:focus,
             &:active
-                box-shadow: 0 0 1.2rem rgba($color, 0.5) !important
+                box-shadow: 0 0 1.2rem rgba($color, $opacity-muted) !important
     
 // ====================================
 // INPUTS
@@ -66,13 +53,11 @@ $input-border-color: map-get($theme-map, default) !default
         grow: 1
         shrink: 0
         basis: auto
-    margin:
-        bottom: 0.5rem
+    margin-bottom: 0.5rem
     font:
         size: $font-size
         weight: $font-weight-heavy
     color: $font-color
-
 // --- SELECT ---
 .select
     @extend .input
@@ -83,7 +68,6 @@ $input-border-color: map-get($theme-map, default) !default
     // Pseudo
     &::-ms-expand
         display: none
-
 // --- TEXT AREA ---
 .textarea
     @extend .input
