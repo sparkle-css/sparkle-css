@@ -37,7 +37,7 @@ body {
   line-height: 1.6;
   background: #FFFFFF;
   color: #404040;
-  font-family: "Lato", "Helvetica Neue", Helvetica, "Open Sans", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Lato", Roboto, Oxygen-Sans, Ubuntu, "Helvetica Neue", sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
 }
@@ -52,19 +52,27 @@ body {
   color: #F4F4F8;
 }
 
+dl,
 ol,
-ul:not(.nav__menu):not(.menu) {
-  margin-left: 1.5rem;
+ul {
+  list-style-position: inside;
 }
 
+dl:not(:last-child),
 ol:not(:last-child),
-ul:not(.nav__menu):not(.menu):not(:last-child) {
+ul:not(:last-child) {
   margin-bottom: 1rem;
 }
 
-ol > li,
-ul:not(.nav__menu):not(.menu) > li {
-  padding-left: 1.5rem;
+dl dl, dl ol, dl ul,
+ol dl,
+ol ol,
+ol ul,
+ul dl,
+ul ol,
+ul ul {
+  margin-bottom: 0;
+  margin-left: 2rem;
 }
 
 /* =================================================== */
@@ -171,28 +179,56 @@ a:hover {
   color: #ADD2E6;
 }
 
+.make-text-primary.make-text-muted {
+  color: rgba(173, 210, 230, 0.5);
+}
+
 .make-text-info {
   color: #1982C4;
+}
+
+.make-text-info.make-text-muted {
+  color: rgba(25, 130, 196, 0.5);
 }
 
 .make-text-success {
   color: #6ABB4F;
 }
 
+.make-text-success.make-text-muted {
+  color: rgba(106, 187, 79, 0.5);
+}
+
 .make-text-warning {
   color: #FEC524;
+}
+
+.make-text-warning.make-text-muted {
+  color: rgba(254, 197, 36, 0.5);
 }
 
 .make-text-danger {
   color: #FF3344;
 }
 
+.make-text-danger.make-text-muted {
+  color: rgba(255, 51, 68, 0.5);
+}
+
 .make-text-light {
   color: #F4F4F8;
 }
 
+.make-text-light.make-text-muted {
+  color: rgba(244, 244, 248, 0.5);
+}
+
 .make-text-dark {
   color: #222528;
+}
+
+.make-text-dark.make-text-muted {
+  color: rgba(34, 37, 40, 0.5);
 }
 
 .make-text-title {
@@ -209,9 +245,8 @@ a:hover {
   font-style: italic;
 }
 
-.make-text-linethrough {
-  -webkit-text-decoration-line: line-through;
-          text-decoration-line: line-through;
+.make-text-muted {
+  color: rgba(64, 64, 64, 0.5);
 }
 
 code {
@@ -312,9 +347,12 @@ code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   width: 100%;
 }
 
@@ -324,8 +362,12 @@ code {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
   line-height: 1.6;
 }
 
@@ -1062,7 +1104,7 @@ code {
 
 .hero.make-primary {
   background: #ADD2E6;
-  color: #F4F4F8;
+  color: #222528;
 }
 
 .hero.make-info {
@@ -1220,25 +1262,29 @@ code {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  min-height: 6rem;
   height: auto;
   margin: 0;
   padding: 0;
   background: whitesmoke;
+  border-bottom: 1px solid #e2e2e2;
+  -webkit-box-shadow: 0 1px 3px rgba(34, 37, 40, 0.1), 0 1px 6px rgba(34, 37, 40, 0.05);
+          box-shadow: 0 1px 3px rgba(34, 37, 40, 0.1), 0 1px 6px rgba(34, 37, 40, 0.05);
 }
 
-.nav input[type='checkbox'] {
+.nav > input[type='checkbox'] {
   display: none;
   height: 60px;
 }
 
-.nav input[type='checkbox']:checked ~ .nav__menu {
+.nav > input[type='checkbox']:checked ~ .nav__menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: auto;
 }
 
-.nav input[type='checkbox']:checked ~ .nav__toggle {
+.nav > input[type='checkbox']:checked ~ .nav__toggle {
   color: black;
   border-color: black;
 }
@@ -1266,6 +1312,12 @@ code {
 }
 
 .nav__brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1rem;
   color: #404040 !important;
   font-size: 1.5rem !important;
@@ -1274,7 +1326,7 @@ code {
 }
 
 .nav__brand img, .nav__brand__img {
-  max-height: 3.0rem;
+  height: 4.0rem;
 }
 
 .nav__brand.make-extra {
@@ -1295,16 +1347,21 @@ code {
   display: block;
   padding: 1rem;
   text-decoration: none !important;
-  color: #404040;
+  color: rgba(64, 64, 64, 0.5);
   cursor: pointer;
 }
 
 .nav__menu__item:hover {
-  background: #e8e8e8;
+  background: #f3f3f3;
+}
+
+.nav__menu__item:hover > a {
+  color: #404040;
 }
 
 .nav__menu__item.make-active > a {
-  color: #ADD2E6;
+  color: #404040;
+  font-weight: 700;
 }
 
 .nav__menu__item.make-special {
@@ -1376,12 +1433,13 @@ code {
         -ms-flex-align: center;
             align-items: center;
     width: auto;
+    margin-bottom: 0 !important;
   }
   .nav__menu__item:hover {
     background: transparent;
   }
   .nav__menu__item:hover > a {
-    color: #ADD2E6;
+    color: #404040;
   }
   .nav__menu.make-right {
     margin-left: auto;
@@ -1645,16 +1703,18 @@ code {
   white-space: nowrap;
 }
 
-.button:hover {
+.button:not(:disabled):hover, .button:not(:disabled):focus {
+  text-decoration: none;
   background: #cfcfcf;
 }
 
-.button:disabled, .button.make-disabled {
+.button:disabled, .button.make-disabled, .button[disabled] {
+  cursor: not-allowed;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  cursor: not-allowed;
+  pointer-events: none;
   opacity: 0.3;
 }
 
@@ -1664,7 +1724,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-primary:hover, .button.make-primary:focus, .button.make-primary:active {
+.button.make-primary:not(:disabled):hover, .button.make-primary:not(:disabled):focus, .button.make-primary:not(:disabled):active {
   background: #90c2dd;
   border-color: transparent;
 }
@@ -1675,7 +1735,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-primary.make-reverse:hover, .button.make-primary.make-reverse:focus, .button.make-primary.make-reverse:active {
+.button.make-primary.make-reverse:not(:disabled):hover, .button.make-primary.make-reverse:not(:disabled):focus, .button.make-primary.make-reverse:not(:disabled):active {
   background: #101213 !important;
 }
 
@@ -1685,7 +1745,7 @@ code {
   border: 1px solid #222528;
 }
 
-.button.make-primary.make-reverse.make-outline:hover, .button.make-primary.make-reverse.make-outline:focus, .button.make-primary.make-reverse.make-outline:active {
+.button.make-primary.make-reverse.make-outline:not(:disabled):hover, .button.make-primary.make-reverse.make-outline:not(:disabled):focus, .button.make-primary.make-reverse.make-outline:not(:disabled):active {
   background: #222528 !important;
   color: #ADD2E6 !important;
 }
@@ -1696,7 +1756,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-primary.make-link:hover, .button.make-primary.make-link:focus, .button.make-primary.make-link:active {
+.button.make-primary.make-link:not(:disabled):hover, .button.make-primary.make-link:not(:disabled):focus, .button.make-primary.make-link:not(:disabled):active {
   background: rgba(173, 210, 230, 0.1);
   color: #86bdda !important;
   text-decoration: underline;
@@ -1708,7 +1768,7 @@ code {
   border: 1px solid #ADD2E6;
 }
 
-.button.make-primary.make-outline:hover, .button.make-primary.make-outline:focus, .button.make-primary.make-outline:active {
+.button.make-primary.make-outline:not(:disabled):hover, .button.make-primary.make-outline:not(:disabled):focus, .button.make-primary.make-outline:not(:disabled):active {
   color: #222528 !important;
   background: #ADD2E6;
   border-color: transparent;
@@ -1720,7 +1780,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-info:hover, .button.make-info:focus, .button.make-info:active {
+.button.make-info:not(:disabled):hover, .button.make-info:not(:disabled):focus, .button.make-info:not(:disabled):active {
   background: #156ca2;
   border-color: transparent;
 }
@@ -1731,7 +1791,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-info.make-reverse:hover, .button.make-info.make-reverse:focus, .button.make-info.make-reverse:active {
+.button.make-info.make-reverse:not(:disabled):hover, .button.make-info.make-reverse:not(:disabled):focus, .button.make-info.make-reverse:not(:disabled):active {
   background: #dddde9;
 }
 
@@ -1741,7 +1801,7 @@ code {
   border: 1px solid #F4F4F8;
 }
 
-.button.make-info.make-reverse.make-outline:hover, .button.make-info.make-reverse.make-outline:focus, .button.make-info.make-reverse.make-outline:active {
+.button.make-info.make-reverse.make-outline:not(:disabled):hover, .button.make-info.make-reverse.make-outline:not(:disabled):focus, .button.make-info.make-reverse.make-outline:not(:disabled):active {
   background: #F4F4F8 !important;
   color: #1982C4 !important;
 }
@@ -1752,7 +1812,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-info.make-link:hover, .button.make-info.make-link:focus, .button.make-info.make-link:active {
+.button.make-info.make-link:not(:disabled):hover, .button.make-info.make-link:not(:disabled):focus, .button.make-info.make-link:not(:disabled):active {
   background: rgba(25, 130, 196, 0.1);
   color: #136497 !important;
   text-decoration: underline;
@@ -1764,7 +1824,7 @@ code {
   border: 1px solid #1982C4;
 }
 
-.button.make-info.make-outline:hover, .button.make-info.make-outline:focus, .button.make-info.make-outline:active {
+.button.make-info.make-outline:not(:disabled):hover, .button.make-info.make-outline:not(:disabled):focus, .button.make-info.make-outline:not(:disabled):active {
   color: #F4F4F8 !important;
   background: #1982C4;
   border-color: transparent;
@@ -1776,7 +1836,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-success:hover, .button.make-success:focus, .button.make-success:active {
+.button.make-success:not(:disabled):hover, .button.make-success:not(:disabled):focus, .button.make-success:not(:disabled):active {
   background: #59a43f;
   border-color: transparent;
 }
@@ -1787,7 +1847,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-success.make-reverse:hover, .button.make-success.make-reverse:focus, .button.make-success.make-reverse:active {
+.button.make-success.make-reverse:not(:disabled):hover, .button.make-success.make-reverse:not(:disabled):focus, .button.make-success.make-reverse:not(:disabled):active {
   background: #dddde9;
 }
 
@@ -1797,7 +1857,7 @@ code {
   border: 1px solid #F4F4F8;
 }
 
-.button.make-success.make-reverse.make-outline:hover, .button.make-success.make-reverse.make-outline:focus, .button.make-success.make-reverse.make-outline:active {
+.button.make-success.make-reverse.make-outline:not(:disabled):hover, .button.make-success.make-reverse.make-outline:not(:disabled):focus, .button.make-success.make-reverse.make-outline:not(:disabled):active {
   background: #F4F4F8 !important;
   color: #6ABB4F !important;
 }
@@ -1808,7 +1868,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-success.make-link:hover, .button.make-success.make-link:focus, .button.make-success.make-link:active {
+.button.make-success.make-link:not(:disabled):hover, .button.make-success.make-link:not(:disabled):focus, .button.make-success.make-link:not(:disabled):active {
   background: rgba(106, 187, 79, 0.1);
   color: #549b3c !important;
   text-decoration: underline;
@@ -1820,7 +1880,7 @@ code {
   border: 1px solid #6ABB4F;
 }
 
-.button.make-success.make-outline:hover, .button.make-success.make-outline:focus, .button.make-success.make-outline:active {
+.button.make-success.make-outline:not(:disabled):hover, .button.make-success.make-outline:not(:disabled):focus, .button.make-success.make-outline:not(:disabled):active {
   color: #F4F4F8 !important;
   background: #6ABB4F;
   border-color: transparent;
@@ -1832,7 +1892,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-warning:hover, .button.make-warning:focus, .button.make-warning:active {
+.button.make-warning:not(:disabled):hover, .button.make-warning:not(:disabled):focus, .button.make-warning:not(:disabled):active {
   background: #fbb901;
   border-color: transparent;
 }
@@ -1843,7 +1903,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-warning.make-reverse:hover, .button.make-warning.make-reverse:focus, .button.make-warning.make-reverse:active {
+.button.make-warning.make-reverse:not(:disabled):hover, .button.make-warning.make-reverse:not(:disabled):focus, .button.make-warning.make-reverse:not(:disabled):active {
   background: #101213 !important;
 }
 
@@ -1853,7 +1913,7 @@ code {
   border: 1px solid #222528;
 }
 
-.button.make-warning.make-reverse.make-outline:hover, .button.make-warning.make-reverse.make-outline:focus, .button.make-warning.make-reverse.make-outline:active {
+.button.make-warning.make-reverse.make-outline:not(:disabled):hover, .button.make-warning.make-reverse.make-outline:not(:disabled):focus, .button.make-warning.make-reverse.make-outline:not(:disabled):active {
   background: #222528 !important;
   color: #FEC524 !important;
 }
@@ -1864,7 +1924,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-warning.make-link:hover, .button.make-warning.make-link:focus, .button.make-warning.make-link:active {
+.button.make-warning.make-link:not(:disabled):hover, .button.make-warning.make-link:not(:disabled):focus, .button.make-warning.make-link:not(:disabled):active {
   background: rgba(254, 197, 36, 0.1);
   color: #eeb001 !important;
   text-decoration: underline;
@@ -1876,7 +1936,7 @@ code {
   border: 1px solid #FEC524;
 }
 
-.button.make-warning.make-outline:hover, .button.make-warning.make-outline:focus, .button.make-warning.make-outline:active {
+.button.make-warning.make-outline:not(:disabled):hover, .button.make-warning.make-outline:not(:disabled):focus, .button.make-warning.make-outline:not(:disabled):active {
   color: #222528 !important;
   background: #FEC524;
   border-color: transparent;
@@ -1888,7 +1948,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-danger:hover, .button.make-danger:focus, .button.make-danger:active {
+.button.make-danger:not(:disabled):hover, .button.make-danger:not(:disabled):focus, .button.make-danger:not(:disabled):active {
   background: #ff0d21;
   border-color: transparent;
 }
@@ -1899,7 +1959,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-danger.make-reverse:hover, .button.make-danger.make-reverse:focus, .button.make-danger.make-reverse:active {
+.button.make-danger.make-reverse:not(:disabled):hover, .button.make-danger.make-reverse:not(:disabled):focus, .button.make-danger.make-reverse:not(:disabled):active {
   background: #dddde9;
 }
 
@@ -1909,7 +1969,7 @@ code {
   border: 1px solid #F4F4F8;
 }
 
-.button.make-danger.make-reverse.make-outline:hover, .button.make-danger.make-reverse.make-outline:focus, .button.make-danger.make-reverse.make-outline:active {
+.button.make-danger.make-reverse.make-outline:not(:disabled):hover, .button.make-danger.make-reverse.make-outline:not(:disabled):focus, .button.make-danger.make-reverse.make-outline:not(:disabled):active {
   background: #F4F4F8 !important;
   color: #FF3344 !important;
 }
@@ -1920,7 +1980,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-danger.make-link:hover, .button.make-danger.make-link:focus, .button.make-danger.make-link:active {
+.button.make-danger.make-link:not(:disabled):hover, .button.make-danger.make-link:not(:disabled):focus, .button.make-danger.make-link:not(:disabled):active {
   background: rgba(255, 51, 68, 0.1);
   color: #ff0015 !important;
   text-decoration: underline;
@@ -1932,7 +1992,7 @@ code {
   border: 1px solid #FF3344;
 }
 
-.button.make-danger.make-outline:hover, .button.make-danger.make-outline:focus, .button.make-danger.make-outline:active {
+.button.make-danger.make-outline:not(:disabled):hover, .button.make-danger.make-outline:not(:disabled):focus, .button.make-danger.make-outline:not(:disabled):active {
   color: #F4F4F8 !important;
   background: #FF3344;
   border-color: transparent;
@@ -1944,7 +2004,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-light:hover, .button.make-light:focus, .button.make-light:active {
+.button.make-light:not(:disabled):hover, .button.make-light:not(:disabled):focus, .button.make-light:not(:disabled):active {
   background: #dddde9;
   border-color: transparent;
 }
@@ -1955,7 +2015,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-light.make-reverse:hover, .button.make-light.make-reverse:focus, .button.make-light.make-reverse:active {
+.button.make-light.make-reverse:not(:disabled):hover, .button.make-light.make-reverse:not(:disabled):focus, .button.make-light.make-reverse:not(:disabled):active {
   background: #101213 !important;
 }
 
@@ -1965,7 +2025,7 @@ code {
   border: 1px solid #222528;
 }
 
-.button.make-light.make-reverse.make-outline:hover, .button.make-light.make-reverse.make-outline:focus, .button.make-light.make-reverse.make-outline:active {
+.button.make-light.make-reverse.make-outline:not(:disabled):hover, .button.make-light.make-reverse.make-outline:not(:disabled):focus, .button.make-light.make-reverse.make-outline:not(:disabled):active {
   background: #222528 !important;
   color: #F4F4F8 !important;
 }
@@ -1976,7 +2036,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-light.make-link:hover, .button.make-light.make-link:focus, .button.make-light.make-link:active {
+.button.make-light.make-link:not(:disabled):hover, .button.make-light.make-link:not(:disabled):focus, .button.make-light.make-link:not(:disabled):active {
   background: rgba(226, 226, 226, 0.1);
   color: #d5d5e4 !important;
   text-decoration: underline;
@@ -1988,7 +2048,7 @@ code {
   border: 1px solid #F4F4F8;
 }
 
-.button.make-light.make-outline:hover, .button.make-light.make-outline:focus, .button.make-light.make-outline:active {
+.button.make-light.make-outline:not(:disabled):hover, .button.make-light.make-outline:not(:disabled):focus, .button.make-light.make-outline:not(:disabled):active {
   color: #222528 !important;
   background: #F4F4F8;
   border-color: transparent;
@@ -2000,7 +2060,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-dark:hover, .button.make-dark:focus, .button.make-dark:active {
+.button.make-dark:not(:disabled):hover, .button.make-dark:not(:disabled):focus, .button.make-dark:not(:disabled):active {
   background: #101213;
   border-color: transparent;
 }
@@ -2011,7 +2071,7 @@ code {
   border: 1px solid transparent;
 }
 
-.button.make-dark.make-reverse:hover, .button.make-dark.make-reverse:focus, .button.make-dark.make-reverse:active {
+.button.make-dark.make-reverse:not(:disabled):hover, .button.make-dark.make-reverse:not(:disabled):focus, .button.make-dark.make-reverse:not(:disabled):active {
   background: #dddde9;
 }
 
@@ -2021,7 +2081,7 @@ code {
   border: 1px solid #F4F4F8;
 }
 
-.button.make-dark.make-reverse.make-outline:hover, .button.make-dark.make-reverse.make-outline:focus, .button.make-dark.make-reverse.make-outline:active {
+.button.make-dark.make-reverse.make-outline:not(:disabled):hover, .button.make-dark.make-reverse.make-outline:not(:disabled):focus, .button.make-dark.make-reverse.make-outline:not(:disabled):active {
   background: #F4F4F8 !important;
   color: #222528 !important;
 }
@@ -2032,7 +2092,7 @@ code {
   border-color: transparent;
 }
 
-.button.make-dark.make-link:hover, .button.make-dark.make-link:focus, .button.make-dark.make-link:active {
+.button.make-dark.make-link:not(:disabled):hover, .button.make-dark.make-link:not(:disabled):focus, .button.make-dark.make-link:not(:disabled):active {
   background: rgba(34, 37, 40, 0.1);
   color: #0b0c0c !important;
   text-decoration: underline;
@@ -2044,7 +2104,7 @@ code {
   border: 1px solid #222528;
 }
 
-.button.make-dark.make-outline:hover, .button.make-dark.make-outline:focus, .button.make-dark.make-outline:active {
+.button.make-dark.make-outline:not(:disabled):hover, .button.make-dark.make-outline:not(:disabled):focus, .button.make-dark.make-outline:not(:disabled):active {
   color: #F4F4F8 !important;
   background: #222528;
   border-color: transparent;
@@ -2085,6 +2145,9 @@ code {
   border-radius: 3.5rem;
 }
 
+/* =================================================== */
+/* BUTTON-GROUPS */
+/* =================================================== */
 .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2112,12 +2175,12 @@ code {
   margin-right: 0;
 }
 
-.buttons.make-solid > .button:not(:first-child) {
+.buttons.make-solid > .button:not(.make-block):not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.buttons.make-solid > .button:not(:last-child) {
+.buttons.make-solid > .button:not(.make-block):not(:last-child) {
   margin-right: -1px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -2287,6 +2350,8 @@ code {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
   -webkit-box-pack: center;
@@ -2419,6 +2484,9 @@ code {
   border-radius: 2.0rem;
 }
 
+/* =================================================== */
+/* TAG-GROUPS */
+/* =================================================== */
 .tags {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2437,12 +2505,12 @@ code {
           align-items: center;
 }
 
-.tags > .tag:not(.make-block) {
+.tags > .tag {
   margin-bottom: 0.25em;
   margin-right: 0.25em;
 }
 
-.tags > .tag:not(.make-block):last-child {
+.tags > .tag:last-child {
   margin-right: 0;
 }
 

@@ -41,14 +41,16 @@ body
 // LISTS
 // =======================================
 $list-spacing-v: 1.0rem
-$list-spacing-h: 1.5rem
+$list-spacing-h: 2.0rem
 
+dl,
 ol,
-ul:not(.nav__menu):not(.menu)
-    margin-left: $list-spacing-h
+ul
+    list-style-position: inside
     // Pseudo
     &:not(:last-child)
         margin-bottom: $list-spacing-v
     // Elements
-    & > li
-        padding-left: $list-spacing-h
+    dl, ol, ul
+        margin-bottom: 0
+        margin-left: $list-spacing-h
