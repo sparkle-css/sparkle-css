@@ -9,19 +9,39 @@ const sass = require('gulp-sass');
 const pug = require('gulp-pug');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
+const header = require('postcss-header');
 const cssnano = require('cssnano');
+
+const pkg = require('./package.json');
 
 /* ==================================== */
 /* TASKS
 /* ==================================== */
 // RENDER CSS FILES
 gulp.task('sassify', function() {
-  var browser_pref = [
+  const banner = `
+  /*!
+    * @name         ${pkg.name}
+    * @author       ${pkg.author}
+    * @version      ${pkg.version} - released on 09/15/2018
+    * @website      ${pkg.homepage}
+    * Welcome and thank you for using Sparkle, a lightweight, open-source CSS framework
+    * to help you create simple, responsive website templates. It was developed by J. Djimitry Riviere
+    * in late 2016, and continues to be improved upon by its developer to bring more creative features.
+    * The major key to this framework lies within its ease of us to deliver superb results
+    * when creating a website.
+    * Thank you for using Sparkle! Happy Designing!
+    */
+  `;
+  const options = [
+    header({
+      header: banner
+    }),
     autoprefixer({
-      browsers: ['last 2 versions']
+      browsers: ['last 3 versions', "IE >= 8"]
     })
   ];
-  var shrink_opt = [cssnano()];
+  const shrink_opt = [cssnano()];
 
   return gulp.src('src/sass/sparkle.sass')
     .pipe(sass({
@@ -29,11 +49,13 @@ gulp.task('sassify', function() {
       })
       .on('error', sass.logError)
     )
-    .pipe(postcss(browser_pref))
+    .pipe(postcss(options))
     .pipe(rename('sparkle.css'))
     .pipe(gulp.dest('dist/css/'))
     .pipe(postcss(shrink_opt))
-    .pipe(rename('sparkle.min.css'))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(gulp.dest('dist/css/'));
 
     // .pipe(browserSync.reload({
@@ -58,74 +80,3 @@ gulp.task('pug', function buildHTML() {
 
 // DEFAULT RUN
 gulp.task('default', ['pug', 'sassify']);
-
-// =================================
-// DEPRECATED MODULES
-// =================================
-// const pump = require('pump');
-// const uglify = require('gulp-uglify'); // Only deactivated for now
-// const concatCSS = require('gulp-concat-css');
-// const cleanCSS = require('gulp-clean-css');
-// const imagemin = require('gulp-imagemin');
-// const browserSync = require('browser-sync').create();
-
-// =================================
-// DEPRECATED TASKS
-// =================================
-// RENDER JS FILES
-// gulp.task('uglify', function (cb) {
-//   pump([
-//       gulp.src('src/js/sparkle.js'),
-//       gulp.dest('dist/js/'),
-//       uglify(),
-//       rename('sparkle.min.js'),
-//       gulp.dest('dist/js/')
-//     ],
-//     cb);
-// });
-
-// gulp.task('watch:js', function() {
-//   gulp.watch('src/js/*.js', ['uglify'], browserSync.reload);
-//   console.log('Watching JS files.');
-// });
-
-// RENDER IMAGE FILES
-// gulp.task('minimg', function() {
-//   return gulp.src(['src/img/*.jpg', 'src/img/*.png', 'src/img/*.svg'])
-//     .pipe(imagemin(
-//       imagemin.jpegtran({
-//         progressive: true
-//       }),
-//       imagemin.optipng({
-//         optimizationLevel: 5
-//       }),
-//       imagemin.svgo({
-//         plugins: [{
-//           removeViewBox: true
-//         }]
-//       })
-//     ))
-//     .pipe(gulp.dest('dist/img/'));
-// });
-
-// WATCHES
-// gulp.task('watch:sass', function() {
-//   gulp.watch('src/sass/**/*.sass', ['sassify'], browserSync.reload);
-//   console.log('Watching CSS files.');
-// });
-
-// gulp.task('watch:html', function() {
-//   gulp.watch('dev/**/*.pug', ['pug'], browserSync.reload);
-//   console.log('Watching HTML files.');
-// });
-
-// CREATE SERVER
-// gulp.task('serve', ['watch:html', 'watch:sass', 'watch:js'], function() {
-//   browserSync.init({
-//     server: "./"
-//   });
-
-//   gulp.watch(['src/sass/sparkle.sass'], ['sassify']);
-//   gulp.watch(['dev/**/*.pug'], ['pug']);
-//   gulp.watch("./index.html").on('change', browserSync.reload);
-// });

@@ -30,46 +30,7 @@ $space-size: 1.0rem !default
 // ====================================
 @each $name, $type in $display-map
     .make-display-#{$name}
-        +create-display($type)
-
-// ====================================
-// VISIBILITIES
-// ====================================
-.make-hidden
-    display: none !important
-.make-invisible
-    visibility: hidden !important
-
-+mobile
-    .make-phone-hidden
-        display: none !important
-    .make-invisible-phone
-        visibility: hidden !important
-+tablet    
-    .make-tablet-hidden
-        display: none !important
-    .make-tablet-invisible
-        visibility: hidden !important
-+tablet-only
-    .make-hidden-tablet-only
-        display: none !important 
-    .make-invisible-tablet-only
-        visibility: hidden !important
-+desktop
-    .make-hidden-desktop
-        display: none !important
-    .make-invisible-desktop
-        visibility: hidden !important
-+desktop-only
-    .make-hidden-desktop-only
-        display: none !important
-    .make-invisible-desktop-only
-        visibility: hidden !important
-+widescreen
-    .make-hidden-widescreen
-        display: none !important
-    .make-invisible-widescreen
-        visibility: hidden !important    
+        +create-display($type)    
 
 // ====================================
 // SPACES

@@ -1,8 +1,9 @@
-/*
-    * @name         SPARKLE
-    * @author       J. D. Riviere
-    * @version      1.9.13
-    * @release      09/01/2018
+
+  /*!
+    * @name         sparkle.css
+    * @author       J. Djimitry Riviere <tilithar@gmail.com>
+    * @version      1.9.14 - released on 09/15/2018
+    * @website      https://jdriviere.github.io/sparkle-css
     * Welcome and thank you for using Sparkle, a lightweight, open-source CSS framework
     * to help you create simple, responsive website templates. It was developed by J. Djimitry Riviere
     * in late 2016, and continues to be improved upon by its developer to bring more creative features.
@@ -11,7 +12,6 @@
     * Thank you for using Sparkle! Happy Designing!
     */
 /* External Imports */
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,800");
 @import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 /* ========== SPARKLE.CSS STARTS HERE ========== */
@@ -156,7 +156,7 @@ a:hover {
 }
 
 .make-text-thick {
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .make-text-left {
@@ -233,7 +233,12 @@ a:hover {
 
 .make-text-title {
   font-size: 4rem;
-  font-weight: 400;
+  font-weight: 900;
+}
+
+.make-text-title + .make-text-subtitle {
+  margin-top: -1.5rem !important;
+  margin-bottom: 1.0rem;
 }
 
 .make-text-subtitle {
@@ -243,6 +248,18 @@ a:hover {
 
 .make-text-italic {
   font-style: italic;
+}
+
+.make-text-uppercase {
+  text-transform: uppercase;
+}
+
+.make-text-lowercase {
+  text-transform: lowercase;
+}
+
+.make-text-capitalized {
+  text-transform: capitalize;
 }
 
 .make-text-muted {
@@ -279,14 +296,17 @@ code {
 .checkbox__toggle:checked + .checkbox__icon {
   border-color: #ADD2E6;
   -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
 
 .checkbox__toggle:checked + .checkbox__icon:after {
   background: #ADD2E6;
   -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
 
@@ -599,14 +619,17 @@ code {
 .radio__toggle:checked + .radio__icon {
   border-color: #ADD2E6;
   -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
 
 .radio__toggle:checked + .radio__icon:after {
   background: #ADD2E6;
   -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
 
@@ -684,6 +707,7 @@ code {
 
 .switch > .switch__toggle:checked ~ .switch__handle {
   -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
           transform: translateX(100%);
 }
 
@@ -716,6 +740,7 @@ code {
   border-radius: 50%;
   -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
+  -o-transition: transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
 }
@@ -734,38 +759,43 @@ code {
 /* =================================================== */
 .card {
   width: 100%;
+  background: white;
   border: 1px solid #E2E2E2;
   border-radius: 0.3rem;
   overflow: hidden;
 }
 
-.card > .card__header {
+.card__header {
   padding: 2rem 1rem;
   border-bottom: 1px solid #E2E2E2;
 }
 
-.card > .card__header > .card__title {
+.card__header > .card__title {
   font-size: 2.4rem;
   font-weight: 700;
 }
 
-.card > .card__header > .card__subtitle {
+.card__header > .card__subtitle {
   font-size: 1.8rem;
   font-weight: 400;
 }
 
-.card > .card__body {
+.card__header > .card__title + .card__subtitle {
+  margin-top: -1.0rem !important;
+}
+
+.card__body {
   padding: 1rem;
   font-size: 1.6rem;
   color: #7F7F7F;
 }
 
-.card > .card__body > img,
-.card > .card__body > .card__image {
+.card__body > img,
+.card__body > .card__image {
   width: 100%;
 }
 
-.card > .card__footer {
+.card__footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -775,7 +805,7 @@ code {
   border-top: 1px solid #E2E2E2;
 }
 
-.card > .card__footer > .card__footer__item {
+.card__footer > .card__footer__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -796,27 +826,40 @@ code {
   padding: 2rem 1rem;
 }
 
-.card > .card__footer > .card__footer__item:not(:first-child) {
+.card__footer > .card__footer__item:not(:first-child) {
   border-left: 1px solid #E2E2E2;
 }
 
-.card > .card__footer > .card__footer__item > a {
+.card__footer > .card__footer__item > a {
   text-decoration: none;
-  color: #222528;
-}
-
-.card > .card__footer > .card__footer__item > a:hover {
   color: #ADD2E6;
 }
 
-.card.make-shadow {
+.card__footer > .card__footer__item > a:hover {
+  color: #222528;
+}
+
+.card.make-shadows {
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.15), 0 0 3em rgba(0, 0, 0, 0.05);
           box-shadow: 0 0 1em rgba(0, 0, 0, 0.15), 0 0 3em rgba(0, 0, 0, 0.05);
 }
 
-.card.make-hover:hover {
+.card.make-hoverable {
+  -webkit-transition: -webkit-box-shadow 0.2s ease-in;
+  transition: -webkit-box-shadow 0.2s ease-in;
+  -o-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
+}
+
+.card.make-hoverable:hover {
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.15), 0 0 3em rgba(0, 0, 0, 0.05);
           box-shadow: 0 0 1em rgba(0, 0, 0, 0.15), 0 0 3em rgba(0, 0, 0, 0.05);
+  -webkit-transition: -webkit-box-shadow 0.2s ease-in;
+  transition: -webkit-box-shadow 0.2s ease-in;
+  -o-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
 }
 
 /* =================================================== */
@@ -882,98 +925,74 @@ code {
 @media screen and (min-width: 768px) {
   .grid .column.make-1, .grid .column.make-twelfth {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 8.33333%;
-        flex-basis: 8.33333%;
+        -ms-flex: none;
+            flex: none;
     width: 8.33333%;
   }
   .grid .column.make-2, .grid .column.make-sixth {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 16.66667%;
-        flex-basis: 16.66667%;
+        -ms-flex: none;
+            flex: none;
     width: 16.66667%;
   }
   .grid .column.make-3, .grid .column.make-fourth {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 25%;
-        flex-basis: 25%;
+        -ms-flex: none;
+            flex: none;
     width: 25%;
   }
   .grid .column.make-4, .grid .column.make-third {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 33.33333%;
-        flex-basis: 33.33333%;
+        -ms-flex: none;
+            flex: none;
     width: 33.33333%;
   }
   .grid .column.make-5 {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 41.66667%;
-        flex-basis: 41.66667%;
+        -ms-flex: none;
+            flex: none;
     width: 41.66667%;
   }
   .grid .column.make-6, .grid .column.make-half {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%;
+        -ms-flex: none;
+            flex: none;
     width: 50%;
   }
   .grid .column.make-7 {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 58.33333%;
-        flex-basis: 58.33333%;
+        -ms-flex: none;
+            flex: none;
     width: 58.33333%;
   }
   .grid .column.make-8, .grid .column.make-thirds {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 66.66667%;
-        flex-basis: 66.66667%;
+        -ms-flex: none;
+            flex: none;
     width: 66.66667%;
   }
   .grid .column.make-9, .grid .column.make-fourths {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 75%;
-        flex-basis: 75%;
+        -ms-flex: none;
+            flex: none;
     width: 75%;
   }
   .grid .column.make-10, .grid .column.make-sixths {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 83.33333%;
-        flex-basis: 83.33333%;
+        -ms-flex: none;
+            flex: none;
     width: 83.33333%;
   }
   .grid .column.make-11, .grid .column.make-twelfths {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 91.66667%;
-        flex-basis: 91.66667%;
+        -ms-flex: none;
+            flex: none;
     width: 91.66667%;
   }
   .grid .column.make-12, .grid .column.make-full {
     -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
+        -ms-flex: none;
+            flex: none;
     width: 100%;
   }
 }
@@ -1457,7 +1476,7 @@ code {
 
 .table caption {
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
 }
@@ -2675,7 +2694,100 @@ code {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+/* =================================================== */
+/* VISIBILITIES */
+/* =================================================== */
+.make-hidden {
+  display: none !important;
+}
+
+.make-invisible {
+  visibility: hidden !important;
+}
+
+@media screen and (max-width: 639px) {
+  .make-phone-hidden {
+    display: none !important;
+  }
+  .make-phone-invisible {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 639px) {
+  .make-hidden-mobile-only {
+    display: none !important;
+  }
+  .make-invisible-mobile-only {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .make-tablet-hidden {
+    display: none !important;
+  }
+  .make-tablet-invisible {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 959px) {
+  .make-hidden-tablet-only {
+    display: none !important;
+  }
+  .make-invisible-tablet-only {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .make-hidden-tablet-down {
+    display: none !important;
+  }
+  .make-invisible-tablet-down {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .make-desktop-hidden {
+    display: none !important;
+  }
+  .make-desktop-invisible {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+  .make-hidden-desktop-only {
+    display: none !important;
+  }
+  .make-invisible-desktop-only {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .make-hidden-desktop-down {
+    display: none !important;
+  }
+  .make-invisible-desktop-down {
+    visibility: hidden !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .make-widescreen-hidden {
+    display: none !important;
+  }
+  .make-widescreen-invisible {
+    visibility: hidden !important;
+  }
 }
 
 /* =================================================== */
@@ -2685,7 +2797,7 @@ code {
   display: inline-block;
 }
 
-.make-clear:after {
+.make-clear::after {
   visibility: hidden;
   display: block;
   font-size: 0;
@@ -2716,68 +2828,6 @@ code {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.make-hidden {
-  display: none !important;
-}
-
-.make-invisible {
-  visibility: hidden !important;
-}
-
-@media screen and (max-width: 639px) {
-  .make-phone-hidden {
-    display: none !important;
-  }
-  .make-invisible-phone {
-    visibility: hidden !important;
-  }
-}
-
-@media screen and (min-width: 640px) {
-  .make-tablet-hidden {
-    display: none !important;
-  }
-  .make-tablet-invisible {
-    visibility: hidden !important;
-  }
-}
-
-@media screen and (min-width: 640px) and (max-width: 959px) {
-  .make-hidden-tablet-only {
-    display: none !important;
-  }
-  .make-invisible-tablet-only {
-    visibility: hidden !important;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .make-hidden-desktop {
-    display: none !important;
-  }
-  .make-invisible-desktop {
-    visibility: hidden !important;
-  }
-}
-
-@media screen and (min-width: 960px) and (max-width: 1199px) {
-  .make-hidden-desktop-only {
-    display: none !important;
-  }
-  .make-invisible-desktop-only {
-    visibility: hidden !important;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .make-hidden-widescreen {
-    display: none !important;
-  }
-  .make-invisible-widescreen {
-    visibility: hidden !important;
-  }
 }
 
 .make-no-padding {
