@@ -1,15 +1,15 @@
 {
   "name": "sparkle.css",
-  "version": "1.9.14",
+  "version": "2.2.0",
   "description": "A lightweight, open-source, mobile-first CSS framework for easy website designs.",
-  "main": "sparkle.css",
+  "main": "dist/css/sparkle.css",
   "scripts": {
     "start": "npm install",
-    "build:html": "pug ./dev/index.pug --pretty --out ./",
-    "watch:html": "pug --watch ./dev/index.pug --pretty --out ./",
-    "build:css": "sass ./src/sass/sparkle.sass ./dist/css/sparkle.css --style=expanded",
-    "watch:css": "sass --watch ./src/sass/sparkle.sass:./dist/css/sparkle.css --style=expanded",
-    "build": "rm -rf ./dist/css/sparkle.* && node node_modules/gulp/bin/gulp"
+    "clean": "rm -rf ./dist/css/sparkle.*",
+    "watch": "sass --watch src/sass/sparkle.sass dist/css/sparkle.css --style=expanded",
+    "build": "npm run clean && npm run build:prod",
+    "build:dev": "sass src/sass/sparkle.sass dist/css/sparkle.css --style=expanded",
+    "build:prod": "node node_modules/gulp/bin/gulp"
   },
   "repository": {
     "type": "git",
@@ -20,17 +20,15 @@
   "bugs": {
     "url": "https://github.com/jdriviere/sparkle-css/issues"
   },
-  "homepage": "https://jdriviere.github.io/sparkle-css",
+  "homepage": "https://sparklecss.herokuapp.com",
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
-    "cssnano": "^4.1.0",
+    "autoprefixer": "^9.3.1",
+    "cssnano": "^4.1.7",
     "gulp": "^3.9.1",
     "gulp-cli": "^2.0.1",
     "gulp-postcss": "^8.0.0",
-    "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.1",
-    "postcss-header": "^1.0.0",
-    "pump": "^3.0.0"
+    "gulp-sass": "^4.0.2",
+    "postcss-header": "^1.0.0"
   }
 }

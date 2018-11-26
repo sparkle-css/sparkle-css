@@ -1,0 +1,58 @@
+/* ===================================================
+/* INPUT-ADDONS
+/* ===================================================
+
+// ====================================
+// MIXINS
+// ====================================
+=create-input-addons
+  position: relative
+  display: flex
+  flex:
+    direction: row
+    wrap: nowrap
+  width: 100%
+  // Elements
+  //--- INPUTS ---
+  .input,
+  .select
+    display: flex
+    flex:
+      grow: 1
+      shrink: 0
+      basis: 0
+    line-height: $line-height
+    // Pseudo
+    &:first-child:not(:last-child)
+      border:
+        top-right-radius: 0
+        bottom-right-radius: 0
+    &:not(:first-child):not(:last-child)
+      border-radius: 0
+    &:last-child:not(:first-child)
+      border:
+        top-left-radius: 0
+        bottom-left-radius: 0
+  //--- BUTTONS ---
+  .button
+    display: flex
+    flex: 0
+    z-index: $index-high
+    // Pseudo
+    &:first-child:not(:last-child)
+      margin-right: -1px
+      border:
+        top-right-radius: 0
+        bottom-right-radius: 0
+    &:last-child:not(:first-child)
+      margin-left: -1px
+      border:
+        top-left-radius: 0
+        bottom-left-radius: 0
+
+// ====================================
+// INPUT-ADDONS
+// ====================================
+.input__addon,
+.input__addons
+  +create-input-addons

@@ -1,15 +1,48 @@
 // =================================
 // GLOBAL VARIABLES
 // =================================
-$background-color: $color-pure-white !default
+$background-color: #FFFFFF !default
 $border-radius: 0.3rem !default
+$darken: 7.5% !default
+$lighten: 7.5% !default
 $line-height: 1.6 !default
+$margin-vertical: 0.5rem !default
+$margin-horizontal: 1.5rem !default
+$opacity-default: 1.0 !default
 $opacity-muted: 0.5 !default
+$padding-vertical: 0.5rem !default
+$padding-horizontal: 1.5rem !default
+$spacing: 1.5rem !default
+$transition-time: 0.2s !default
+$transition-type: ease-in !default
 
 // =================================
-// SCREEN SIZE VARIABLES
+// COLOR - THEMES
 // =================================
-$bp-none: 0px !default
+$color-default: #E2E2E2 !default
+$color-primary: #ADD2E6 !default
+$color-info: #1982C4 !default
+$color-success: #6ABB4F !default
+$color-warning: #FEC524 !default
+$color-danger: #FF3344 !default
+$color-light: #F4F4F8 !default
+$color-dark: #222528 !default
+
+$color-none: transparent !default
+
+$color-grey-25: #404040 !default
+$color-grey-50: #7F7F7F !default
+$color-grey-75: #C0C0C0 !default
+$color-grey-100: #FCFCFC !default
+$color-pure-white: #FFFFFF !default
+$color-pure-black: #000000 !default
+
+$color-map: (default: $color-default, primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger, light: $color-light, dark: $color-dark) !default
+
+// =================================
+// BREAKPOINTS
+// =================================
+$bp-none: 0 !default
 $bp-xsmall: 320px !default
 $bp-small: 480px !default
 $bp-medium: 640px !default
@@ -18,19 +51,242 @@ $bp-xlarge: 960px !default
 $bp-widescreen: 1200px !default
 
 // =================================
-// FONTS VARIABLES
+// FONTS
 // =================================
 $font-family: -apple-system, BlinkMacSystemFont, "Lato", Roboto, Oxygen-Sans, Ubuntu, "Helvetica Neue", sans-serif !default
-$font-special: "FontAwesome" !default
 $font-size: 1.6rem !default
 $font-color: $color-grey-25 !default
 $font-weight-light: 300 !default
 $font-weight-normal: 400 !default
-$font-weight-heavy: 700 !default
-$font-weight-black: 900 !default
+$font-weight-bold: 700 !default
+$font-weight-thick: 900 !default
 
 // =================================
-// INDEX VARIABLES
+// TYPOGRAPHY
+// =================================
+$text-font-title-size: 4.0rem !default
+$text-font-title-weight: $font-weight-thick !default
+
+$text-font-subtitle-size: 2.5rem !default
+$text-font-subtitle-weight: $font-weight-normal !default
+
+$text-font-code: monospace !default
+$text-font-code-size: 1.5rem !default
+$text-font-code-padding: 0.5rem !default
+
+$text-font-opacity-muted: $opacity-muted !default
+
+$text-color-map: (primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger, light: $color-light, dark: $color-dark) !default
+$text-alignment-map: (left: left, right: right, centered: center, justified: justify) !default
+$text-weight-map: (thin: $font-weight-light, normal: $font-weight-normal, bold: $font-weight-bold, thick: $font-weight-thick) !default
+
+// ====================================
+// ALERTS
+// ====================================
+$alert-font-size: $font-size !default
+$alert-font-weight: $font-weight-normal !default
+$alert-margin: 1.0rem !default
+$alert-padding: 1.0rem !default
+$alert-border-radius: 0.5rem !default
+
+$alert-color-map: (primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger, light: $color-light, dark: $color-dark) !default
+
+// ====================================
+// BLOCKQUOTES
+// ====================================
+$blockquote-font-size: 2.0rem !default
+$blockquote-font-footer: $font-size !default
+$blockquote-margin: 2.0rem !default
+$blockquote-padding-vertical: 0.5rem !default
+$blockquote-padding-horizontal: 2.0rem !default
+
+// =================================
+// BOXES
+// =================================
+$box-background: lighten($color-light, ($lighten / 4)) !default
+$box-shadow-hovered: 0 1px 3px 0 rgba(0, 0, 0, 0.15) !default
+$box-shadow-hovered-expanded: 0 2px 6px 0 rgba(0, 0, 0, 0.075) !default
+$box-transition: all 0.2s ease-in !default
+
+// =================================
+// BUTTONS
+// =================================
+$button-padding: 0.5rem 1.5rem !default
+
+$button-color-map: (primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger, light: $color-light, dark: $color-dark) !default
+
+// =================================
+// BUTTON GROUPS
+// =================================
+$button-group-margin: 0.25em !default
+
+// ====================================
+// CARDS
+// ====================================
+$card-padding: 1.0rem !default
+$card-font-size: $font-size !default
+$card-font-size-title: 2.4rem !default
+$card-font-size-subtitle: 1.8rem !default
+$card-font-color: $color-grey-50 !default
+$card-border: 1px solid $color-default !default
+$card-shadow: 0 0 1.0em rgba($color-pure-black, 0.15), 0 0 3.0em rgba($color-pure-black, 0.05) !default
+
+// ====================================
+// CHECKBOXES
+// ====================================
+$checkbox-size: 1.7rem !default
+$checkbox-border-color: $color-default !default
+
+// ====================================
+// DISPLAYS
+// ====================================
+$display-map: (block: block, inline-block: inline-block, inline: inline, flex: flex, inline-flex: inline-flex) !default
+
+// ====================================
+// GRIDS
+// ====================================
+$grid-gap: 1.5rem !default
+$grid-columns: 12 !default
+
+// ====================================
+// HEROES
+// ====================================
+$hero-padding: 1.5rem !default
+$hero-padding-body: ($hero-padding * 2) $hero-padding !default
+$hero-padding-small: $hero-padding 0 !default
+$hero-padding-medium: ($hero-padding * 5) 0 !default
+$hero-padding-large: ($hero-padding * 10) 0 !default
+
+$hero-color-map: (primary: ($color-primary, $color-dark), info: ($color-info, $color-light), success: ($color-success, $color-light), warning: ($color-warning, $color-grey-25), danger: ($color-danger, $color-light), light: ($color-light, $color-grey-25), dark: ($color-dark, $color-light)) !default
+
+// ====================================
+// INPUTS
+// ====================================
+$input-margin: 1.5rem !default
+$input-size: 4.0rem !default
+$input-border-color: $color-default !default
+
+$input-color-map: (primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger) !default
+
+// ====================================
+// INPUT GROUPS
+// ====================================
+$input-group-margin: 1.5rem !default
+
+// ====================================
+// LISTS
+// ====================================
+$list-spacing-vertical: 1.0rem !default
+$list-spacing-horizontal: 2.0rem !default
+
+// ====================================
+// LOADERS
+// ====================================
+$loader-size: 2.4rem !default
+$loader-default-color: #BCBCBC !default
+$loader-border-size: $loader-size / 4 !default
+$loader-border-opacity: 0.3 !default
+$loader-animation: spin 1s ease-in-out infinite !default
+
+$loader-color-map: (primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger, light: $color-light, dark: $color-dark) !default
+
+// ====================================
+// MEDIA
+// ====================================
+$media-margin: 1.5rem !default
+$media-padding: 1.5rem !default
+$media-font-title: 1.8rem !default
+$media-border-radius: 0.5rem !default
+$media-border-color: $color-default !default
+$media-profile: 6.4rem !default
+$media-profile-border-radius: $border-radius !default
+
+// ====================================
+// MENU
+// ====================================
+$menu-margin: 1.0rem !default
+$menu-padding: $menu-margin !default
+
+// ====================================
+// NAVIGATION
+// ====================================
+$navig-min-height: 6.0rem !default
+$navig-color-background: lighten($color-default, $lighten) !default
+$navig-color-border: darken($navig-color-background, $darken) !default
+$navig-spacing: 1.5rem !default
+$navig-padding: 1.0rem !default
+$navig-brand: 1.5rem !default
+$navig-font: 1.5rem !default
+$navig-font-color: $font-color !default
+$navig-font-opacity: 0.5 !default
+$navig-font-opacity-hovered: 1.0 !default
+
+// ====================================
+// RADIOS
+// ====================================
+$radio-size: 1.7rem !default
+$radio-border-color: $color-default !default
+
+// ====================================
+// SPACING (MARGIN/PADDING)
+// ====================================
+$spacing-count-min: 1 !default
+$spacing-count-max: 20 !default
+$spacing-increment: 5 !default
+$spacing-size: 0.5rem !default
+
+// ====================================
+// SWITCHES
+// ====================================
+$switch-width: 4.0rem !default
+$switch-height: $switch-width / 2 !default
+
+// ====================================
+// TABLES
+// ====================================
+$table-width: 100% !default
+$table-margin: 1.5rem !default
+$table-padding: 0.5rem 1.5rem !default
+$table-border-radius: 0.3rem !default
+$table-color-background: $color-pure-white !default
+$table-color-border: $color-dark !default
+$table-color-stripe: $color-default !default
+
+$table-caption-padding: 0.5rem !default
+$table-caption-font-color: rgba($color-dark, $opacity-muted) !default
+$table-caption-font-size: 1.4rem !default
+$table-caption-font-weight: $font-weight-bold !default
+
+$table-header-font-size: $font-size !default
+$table-header-font-weight: $font-weight-bold !default
+
+$table-row-font-color-selected: $color-dark !default
+$table-row-background-color-selected: $color-primary !default
+
+$table-cell-font-size: $font-size !default
+$table-cell-font-weight: $font-weight-normal !default
+
+// ====================================
+// TAGS
+// ====================================
+$tag-padding: 0.5rem 1rem !default
+$tag-font-size: 1.2rem !default
+$tag-font-weight: $font-weight-normal !default
+
+$tag-color-map: (primary: $color-primary, info: $color-info, success: $color-success, warning: $color-warning, danger: $color-danger, light: $color-light, dark: $color-dark) !default
+
+// =================================
+// TAG GROUPS
+// =================================
+$tag-group-margin: 0.25em !default
+
+// ====================================
+// WRAPPER (Container)
+// ====================================
+$wrapper-margin: 1.5rem !default
+
+// =================================
+// Z-INDEX
 // =================================
 $index-lowest: -9999 !default
 $index-lower: -10 !default
@@ -41,13 +297,3 @@ $index-above: 1 !default
 $index-high: 5 !default
 $index-higher: 10 !default
 $index-highest: 9999 !default
-
-// ================================
-// MAPS
-// ================================
-// --- Theme Colors --- //
-$theme-map: (default: $grey_base, primary: $lblue_base, info: $blue_base, success: $green_base, warning: $yellow_base, danger: $red_base, light: $white_base, dark: $black_base) !default
-// --- Breakpoints --- //
-$bp-map: (none: $bp-none, xsmall: $bp-xsmall, small: $bp-small, medium: $bp-medium, large: $bp-large, xlarge: $bp-xlarge, widescreen: $bp-widescreen) !default
-// --- Indexes --- //
-$index-map: (lowest: $index-lowest, lower: $index-lower, low: $index-low, below: $index-below, normal: $index-neutral, above: $index-above, high: $index-high, higher: $index-higher, highest: $index-highest) !default

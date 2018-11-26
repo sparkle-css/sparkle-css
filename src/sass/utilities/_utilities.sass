@@ -1,94 +1,66 @@
 /* ===================================================
 /* UTILITIES
 /* ===================================================
-@import ../config/_all
-
-// ====================================
-// VARIABLES
-// ====================================
-$display-map: (block: block, inline-block: inline-block, inline: inline, flex: flex, inline-flex: inline-flex) !default
-
-//--- Padding & Margin ---//
-$space-count-min: 1 !default
-$space-count-max: 10 !default
-$space-size: 1.0rem !default
-
-// ====================================
-// MIXINS
-// ====================================
-=create-display($display:block)
-    display: $display
 
 // ====================================
 // CLEAR
 // ====================================
-.make-clear
-    +clearfix
+.make-clearfix
+  +clearfix
 
 // ====================================
-// DISPLAYS
+// SPACINGS
 // ====================================
-@each $name, $type in $display-map
-    .make-display-#{$name}
-        +create-display($type)    
+.make-no-margins
+  margin: 0 !important
 
-// ====================================
-// SPACES
-// ====================================
-// PADDINGS
-.make-no-padding
-    padding: 0 !important
+.make-no-paddings
+  padding: 0 !important
 
-@for $i from $space-count-min through $space-count-max
-    //--- UNIFORM ---
-    .make-padding-#{$i * $space-count-max}
-        padding: $i * $space-size
-    
-    //--- VERTICAL ---
-    .make-padding-#{$i * $space-count-max}-vertical
-        padding:
-            top: $i * $space-size
-            bottom: $i * $space-size
-    .make-padding-#{$i * $space-count-max}-top
-        padding-top: $i * $space-size
-    .make-padding-#{$i * $space-count-max}-bottom
-        padding-bottom: $i * $space-size
-
-    //--- HORIZONTAL ---
-    .make-padding-#{$i * $space-count-max}-horizontal
-        padding:
-            left: $i * $space-size
-            right: $i * $space-size
-    .make-padding-#{$i * $space-count-max}-left
-        padding-left: $i * $space-size
-    .make-padding-#{$i * $space-count-max}-right
-        padding-right: $i * $space-size
-
-// MARGINS
-.make-no-margin
-    margin: 0 !important
-
-@for $i from $space-count-min through $space-count-max
-    //--- UNIFORM ---
-    .make-margin-#{$i * $space-count-max}
-        margin: ($i * $space-size)
-        
-    //--- VERTICAL ---
-    .make-margin-#{$i * $space-count-max}-vertical
-        margin:
-            top: $i * $space-size
-            bottom: $i * $space-size
-    .make-margin-#{$i * $space-count-max}-top
-        margin-top: $i * $space-size
-    .make-margin-#{$i * $space-count-max}-bottom
-        margin-bottom: $i * $space-size
-
-    //--- HORIZONTAL ---
-    .make-margin-#{$i * $space-count-max}-horizontal
-        margin:
-            left: $i * $space-size
-            right: $i * $space-size
-    .make-margin-#{$i * $space-count-max}-left
-        margin-left: $i * $space-size
-    .make-margin-#{$i * $space-count-max}-right
-        margin-right: $i * $space-size
+@while $spacing-count-min <= $spacing-count-max
+  //--- UNIFORM ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}
+    margin: ($spacing-count-min * $spacing-size)
+  .make-padding-#{$spacing-count-min * $spacing-increment}
+    padding: $spacing-count-min * $spacing-size
+  //--- VERTICAL ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}-vertical
+    margin:
+      top: $spacing-count-min * $spacing-size
+      bottom: $spacing-count-min * $spacing-size
+  .make-padding-#{$spacing-count-min * $spacing-increment}-vertical
+    padding:
+      top: $spacing-count-min * $spacing-size
+      bottom: $spacing-count-min * $spacing-size
+  //--- TOP ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}-top
+    margin-top: $spacing-count-min * $spacing-size
+  .make-padding-#{$spacing-count-min * $spacing-increment}-top
+    padding-top: $spacing-count-min * $spacing-size
+  //--- BOTTOM ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}-bottom
+    margin-bottom: $spacing-count-min * $spacing-size
+  .make-padding-#{$spacing-count-min * $spacing-increment}-bottom
+    padding-bottom: $spacing-count-min * $spacing-size
+  //--- HORIZONTAL ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}-horizontal
+    margin:
+      left: $spacing-count-min * $spacing-size
+      right: $spacing-count-min * $spacing-size
+  .make-padding-#{$spacing-count-min * $spacing-increment}-horizontal
+    padding:
+      left: $spacing-count-min * $spacing-size
+      right: $spacing-count-min * $spacing-size
+  //--- LEFT ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}-left
+    margin-left: $spacing-count-min * $spacing-size
+  .make-padding-#{$spacing-count-min * $spacing-increment}-left
+    padding-left: $spacing-count-min * $spacing-size
+  //--- RIGHT ---
+  .make-margin-#{$spacing-count-min * $spacing-increment}-right
+    margin-right: $spacing-count-min * $spacing-size
+  .make-padding-#{$spacing-count-min * $spacing-increment}-right
+    padding-right: $spacing-count-min * $spacing-size
+  
+  // Increment
+  $spacing-count-min: $spacing-count-min + 1

@@ -1,65 +1,58 @@
 /* ===================================================
 /* FORM (SWITCHES)
 /* ===================================================
-@import ../config/_all
-
-// ====================================
-// VARIABLES
-// ====================================
-$switch-color-map: (primary: $lblue_base, info: $blue_base, success: $green_base, warning: $yellow_base, danger: $red_base, light: $white_base, dark: $black_base) !default
-$switch-width: 4.0rem !default
-$switch-height: $switch-width / 2 !default
 
 // ====================================
 // MIXINS
 // ====================================
 =create-switch
+  position: relative
+  display: inline-block
+  width: $switch-width
+  height: $switch-height
+  vertical-align: center
+  border-radius: 1.0rem
+  // Elements
+  &__toggle
+    position: absolute
+    display: none
+    opacity: 0
+    // Pseudo
+    &:checked
+      // Elements
+      ~ .switch__handle
+        transform: translateX(100%)
+      ~ .switch__label
+        background: $color-primary
+        border-color: darken($color-primary, $darken * 2)
+    &:disabled
+      // Elements
+      ~ .switch__handle
+        opacity: $opacity-muted
+        user-select: none
+        cursor: not-allowed
+      ~ .switch__label
+        opacity: $opacity-muted
+  &__handle
+    position: absolute
+    top: 0
+    left: 0
+    width: $switch-width / 2
+    height: $switch-width / 2
+    background: $color-light
+    border: 1px solid darken($color-light, $darken * 2)
+    border-radius: 50%
+    transition: transform 0.2s
+  &__label
     position: relative
-    display: inline-block
-    width: $switch-width
-    height: $switch-height
-    vertical-align: center
-    border-radius: 1.0rem
-    // Elements
-    > .switch__toggle
-        position: absolute
-        display: none
-        opacity: 0
-        // Pseudo
-        &:checked
-            ~ .switch__handle
-                transform: translateX(100%)
-            ~ .switch__label
-                background: map-get($theme-map, primary)
-                border-color: darken(map-get($theme-map, primary), $darken * 2)
-        &:disabled
-            // Elements
-            ~ .switch__handle
-                opacity: $opacity-muted
-                user-select: none
-                cursor: not-allowed
-            ~ .switch__label
-                opacity: $opacity-muted
-    > .switch__handle
-        position: absolute
-        top: 0
-        left: 0
-        width: $switch-width / 2
-        height: $switch-width / 2
-        background: $white_base
-        border: 1px solid darken($white_base, $darken * 2)
-        border-radius: 50%
-        transition: transform 0.2s
-    > .switch__label
-        position: relative
-        display: block
-        background: $grey_base
-        height: inherit
-        border: 1px solid darken($grey_base, $darken * 2)
-        border-radius: inherit
+    display: block
+    background: $color-default
+    height: inherit
+    border: 1px solid darken($color-default, $darken * 2)
+    border-radius: inherit
 
 // ====================================
 // SWITCH
 // ====================================
 .switch
-    +create-switch
+  +create-switch

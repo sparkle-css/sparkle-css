@@ -1,0 +1,18 @@
+// =======================================
+// GRID
+// =======================================
+=create-columns($name: "")
+  @if $name == ""
+    @for $i from 1 through $grid-columns
+      &.make-#{$i}
+        flex: none
+        width: percentage($i / $grid-columns)
+      &.make-offset-#{$i}
+        margin-left: percentage($i / $grid-columns)
+  @else
+    @for $i from 1 through $grid-columns
+      &.make-#{$i}-#{$name}
+        flex: none
+        width: percentage($i / $grid-columns)
+      &.make-offset-#{$i}-#{$name}
+        margin-left: percentage($i / $grid-columns)

@@ -1,12 +1,9 @@
-'use strict';
-
 /* ==================================== */
 /* PACKAGES
 /* ==================================== */
 const gulp = require('gulp');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
-const pug = require('gulp-pug');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const header = require('postcss-header');
@@ -23,8 +20,9 @@ gulp.task('sassify', function() {
   /*!
     * @name         ${pkg.name}
     * @author       ${pkg.author}
-    * @version      ${pkg.version} - released on 09/15/2018
+    * @version      ${pkg.version} - released on 11/14/2018
     * @website      ${pkg.homepage}
+    * @license      ${pkg.license}
     * Welcome and thank you for using Sparkle, a lightweight, open-source CSS framework
     * to help you create simple, responsive website templates. It was developed by J. Djimitry Riviere
     * in late 2016, and continues to be improved upon by its developer to bring more creative features.
@@ -38,7 +36,7 @@ gulp.task('sassify', function() {
       header: banner
     }),
     autoprefixer({
-      browsers: ['last 3 versions', "IE >= 8"]
+      browsers: ['last 3 versions', "IE >= 10"]
     })
   ];
   const shrink_opt = [cssnano()];
@@ -57,26 +55,7 @@ gulp.task('sassify', function() {
       suffix: '.min'
     }))
     .pipe(gulp.dest('dist/css/'));
-
-    // .pipe(browserSync.reload({
-    //   stream: true
-    // }));
-});
-
-// RENDER HTML FILES
-gulp.task('pug', function buildHTML() {
-  return gulp.src('dev/*.pug')
-    .pipe(
-      pug({
-        pretty: true
-      })
-    )
-    .pipe(gulp.dest('./'));
-
-    // .pipe(browserSync.reload({
-    //   stream: true
-    // }));
 });
 
 // DEFAULT RUN
-gulp.task('default', ['pug', 'sassify']);
+gulp.task('default', ['sassify']);

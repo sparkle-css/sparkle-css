@@ -1,15 +1,15 @@
 <p align="center">
-    <a href="http://jdriviere.github.io/sparkle-css" target="_blank">
-    	<img width="300" src="dist/img/Logo_InCol_v2.png">
+    <a href="https://sparklecss.herokuapp.com" target="_blank">
+    	<img width="120" src="dist/img/Sparkle_Logo.svg">
     </a>
 </p>
 
 A lightweight, open-source, mobile-first CSS framework for easy website designs.
 
 [![license](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/jdriviere/sparkle-css/blob/master/LICENSE)
-[![website](https://img.shields.io/badge/website-online-green.svg)](https://jdriviere.github.io/sparkle-css/)
-[![GitHub tag](https://img.shields.io/badge/version-1.9.14-blue.svg)](https://github.com/jdriviere/sparkle-css/releases/tag/v1.9.14)
-[![npm](https://img.shields.io/badge/npm-v1.9.14-red.svg)](https://www.npmjs.com/package/sparkle.css)
+[![website](https://img.shields.io/badge/website-online-green.svg)](https://sparklecss.herokuapp.com)
+[![GitHub tag](https://img.shields.io/badge/version-2.2.0-blue.svg)](https://github.com/jdriviere/sparkle-css/releases/tag/v2.2.0)
+[![npm](https://img.shields.io/badge/npm-v2.2.0-red.svg)](https://www.npmjs.com/package/sparkle.css)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/gh/jdriviere/sparkle-css/badge?style=rounded)](https://www.jsdelivr.com/package/gh/jdriviere/sparkle-css)
 [![David-DM](https://david-dm.org/jdriviere/sparkle-css.svg)](https://david-dm.org/jdriviere/sparkle-css)
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/jdriviere/sparkle-css)
@@ -19,24 +19,24 @@ Welcome and thank you for using Sparkle, a lightweight, responsive, open-source 
 
 ## Getting Started
 There are 3 ways to get started with the Sparkle framework:
+
 1. Clone for fork your own copy via Git;
+```bash
+git clone https://github.com/jdriviere/sparkle-css.git
 ```
-https://github.com/jdriviere/sparkle-css.git
-```
+
 2. Link the latest release directly into your HTML file by inserting the following lines to your HTML file: 
 ```html
-<head>
-    <!-- Your links, sources, title, and meta tags here -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jdriviere/sparkle-css@VERSION/dist/css/sparkle.min.css">
-</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jdriviere/sparkle-css@VERSION/dist/css/sparkle.min.css">
 ```
+
 3. Download using Bower:
-```
+```bash
 bower install sparkle-css
 ```
 
 ## Documentation
-The documentation can be found [here!](https://sparkle-css.github.io/sparkle-docs/).
+The documentation can be found [here!](https://github.com/sparkle-css/sparkle-docs/tree/master/docs).
 
 ## Contributing
 Coming soon...
