@@ -2,6 +2,7 @@
 // INPUT CONTROL
 // =======================================
 =input-control
+  +reset-appearance
   position: relative
   display: inline-flex
   flex:
@@ -11,10 +12,7 @@
   justify-content: flex-start
   align-items: center
   padding: 0.5rem 1.5rem
-  appearance: none
-  outline: none
   border: 1px solid $color-none
-  box-shadow: none
   // Pseudo
   &:focus,
   &:active
@@ -23,7 +21,7 @@
   &:disabled
     user-select: none
     cursor: not-allowed
-    opacity: 0.5
+    opacity: $opacity-muted
     // Pseudo
     &:hover
       border-color: $color-none

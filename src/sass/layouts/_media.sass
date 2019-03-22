@@ -9,14 +9,12 @@
   position: relative
   display: flex
   align-items: flex-start
-  margin-bottom: $media-margin
-  padding: $media-padding
-  background: map-get($color-map, light)
-  border: 1px solid $media-border-color
-  border-radius: $media-border-radius
+  // Pseudo
+  &:not(:last-child)
+    margin-bottom: $spacing
   // Elements
   //--- PROFILE ---
-  &__profile
+  &-profile
     display: flex
     flex:
       grow: 0
@@ -33,19 +31,14 @@
       width: 100%
       border-radius: $media-profile-border-radius
   //--- BODY ---
-  &__body
+  &-body
     display: flex
-    flex: 1
+    flex:
+      grow: 1
+      shrink: 1
+      basis: auto
     flex-direction: column
-    // Elements
-    .media__title
-      margin: 0
-      font:
-        size: $media-font-title !important
-        weight: $font-weight-bold !important
-    .media__subtitle
-      margin: 0
-      font-weight: $font-weight-normal !important
+    order: 0
 
 // ====================================
 // MEDIA

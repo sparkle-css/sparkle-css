@@ -10,11 +10,11 @@
   align-items: center
   cursor: pointer
   // Elements
-  &__toggle
+  &-toggle
     display: none
     opacity: 0
     // Pseudo
-    &:checked + .checkbox__icon
+    &:checked + .checkbox-icon
       border-color: map-get($color-map, primary)
       transform: scale(1.1)
       transition: all 0.2s ease-in
@@ -22,7 +22,7 @@
       &::after
         background: map-get($color-map, primary)
         transition: all 0.2s ease-in
-    &:disabled + .checkbox__icon
+    &:disabled + .checkbox-icon
       cursor: not-allowed
       user-select: none
       opacity: $opacity-muted
@@ -30,7 +30,7 @@
       cursor: not-allowed
       user-select: none
       opacity: $opacity-muted
-  &__icon
+  &-icon
     position: relative
     display: inline-flex
     align-items: center
@@ -59,4 +59,3 @@
 // ====================================
 .checkbox
   +create-checkbox
-      
